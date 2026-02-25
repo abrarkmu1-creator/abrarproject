@@ -1,1 +1,39 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Exam Paper Generator</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 20px;\n        }\n        .upload-area {\n            border: 2px dashed #ccc;\n            padding: 20px;\n            text-align: center;\n            margin-bottom: 20px;\n        }\n    </style>\n</head>\n<body>\n    <h1>Exam Paper Generator</h1>\n    <div class="upload-area">\n        <h2>Drag and Drop File Upload</h2>\n        <p>Drag your files here or click to upload.</p>\n        <input type="file" id="fileElem" multiple accept="application/pdf" style="display:none;">\n        <label for="fileElem" style="cursor:pointer;">Choose files</label>\n    </div>\n    <form id="examForm">\n        <h2>Form Inputs</h2>\n        <label for="subject">Subject:</label><br>\n        <input type="text" id="subject" name="subject" required><br><br>\n        <label for="date">Exam Date:</label><br>\n        <input type="date" id="date" name="date" required><br><br>\n        <input type="submit" value="Generate Exam Paper">\n    </form>\n\n    <script>\n        // JavaScript for drag and drop functionality\n        const uploadArea = document.querySelector('.upload-area');\n        uploadArea.addEventListener('dragover', (event) => {\n            event.preventDefault();\n            uploadArea.style.backgroundColor = '#f0f0f0';\n        });\n        uploadArea.addEventListener('dragleave', () => {\n            uploadArea.style.backgroundColor = '';\n        });\n        uploadArea.addEventListener('drop', (event) => {\n            event.preventDefault();\n            uploadArea.style.backgroundColor = '';\n            const files = event.dataTransfer.files;\n            console.log(files); // Handle the file upload \n        });\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Paper Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Exam Paper Generator</h1>
+        <form id="examForm">
+            <label for="fileUpload">Upload Exam File:</label>
+            <input type="file" id="fileUpload" name="fileUpload" required>
+            <br><br>
+            <label for="paperCode">Paper Code:</label>
+            <input type="text" id="paperCode" name="paperCode" required>
+            <br><br>
+            <label for="marks">Marks:</label>
+            <input type="number" id="marks" name="marks" required>
+            <br><br>
+            <label for="time">Time (in minutes):</label>
+            <input type="number" id="time" name="time" required>
+            <br><br>
+            <h3>Questions:</h3>
+            <div id="questions">
+                <div class="questionField">
+                    <label for="question1">Question 1:</label>
+                    <input type="text" id="question1" name="question1" required>
+                </div>
+            </div>
+            <button type="button" id="addQuestion">Add Question</button>
+            <br><br>
+            <input type="submit" value="Generate Exam Paper">
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
