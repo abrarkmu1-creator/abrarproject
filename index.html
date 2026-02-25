@@ -7,33 +7,90 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Exam Paper Generator</h1>
-        <form id="examForm">
-            <label for="fileUpload">Upload Exam File:</label>
-            <input type="file" id="fileUpload" name="fileUpload" required>
-            <br><br>
-            <label for="paperCode">Paper Code:</label>
-            <input type="text" id="paperCode" name="paperCode" required>
-            <br><br>
-            <label for="marks">Marks:</label>
-            <input type="number" id="marks" name="marks" required>
-            <br><br>
-            <label for="time">Time (in minutes):</label>
-            <input type="number" id="time" name="time" required>
-            <br><br>
-            <h3>Questions:</h3>
-            <div id="questions">
-                <div class="questionField">
-                    <label for="question1">Question 1:</label>
-                    <input type="text" id="question1" name="question1" required>
+    <div class="page">
+        <div class="upload-container">
+            <div class="drag-drop-area">
+                <h2>Drag & drop your Excel file here</h2>
+                <p>or click to select file</p>
+                <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none;">
+            </div>
+        </div>
+
+        <div class="exam-container">
+            <div class="header">
+                <div class="logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect fill='%23C41E3A' width='60' height='60'/%3E%3C/svg%3E" alt="KMU Logo">
+                </div>
+                <div class="title">
+                    <h1>KHYBER MEDICAL UNIVERSITY PESHAWAR</h1>
+                    <p>Write exam name here</p>
+                    <p>Write paper name here</p>
+                </div>
+                <div class="paper-badge">
+                    <span>Paper: A</span>
                 </div>
             </div>
-            <button type="button" id="addQuestion">Add Question</button>
-            <br><br>
-            <input type="submit" value="Generate Exam Paper">
-        </form>
+
+            <div class="form-section">
+                <div class="student-info">
+                    <p><strong>Name:</strong> <span class="line">_________________________________</span></p>
+                    <p><strong>Roll No:</strong> <span class="line">_________________________________</span></p>
+                </div>
+
+                <div class="instructions">
+                    <p><strong>Note:</strong> Fill in the single best choice in the response sheet provided</p>
+                </div>
+
+                <div class="exam-details">
+                    <p><strong>Time:</strong> <span id="displayTime">90</span> Minutes &nbsp;&nbsp;&nbsp;&nbsp; 
+                       <strong>Marks:</strong> <span id="displayMarks">70</span> &nbsp;&nbsp;&nbsp;&nbsp; 
+                       <strong>Invigilator's Sign:</strong> <span class="line">__________</span></p>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-row">
+                        <div>
+                            <label for="numQuestions">How many Questions do you want:</label>
+                            <input type="number" id="numQuestions" value="0" min="0">
+                        </div>
+                        <div>
+                            <label for="paperCodes">How many papers code do you want:</label>
+                            <input type="text" id="paperCodes" value="abc">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div>
+                            <label for="marksInput">How many Marks Paper You want:</label>
+                            <input type="number" id="marksInput" value="70" min="0">
+                        </div>
+                        <div>
+                            <label for="timeInput">In How much Time:</label>
+                            <input type="number" id="timeInput" value="90" min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions-section">
+                    <div class="question-header">
+                        <p><strong>Q1:</strong> Questions Title</p>
+                    </div>
+                    <div class="options">
+                        <p><strong>A:</strong> Option A &nbsp;&nbsp;&nbsp;&nbsp; 
+                           <strong>B:</strong> Option B &nbsp;&nbsp;&nbsp;&nbsp; 
+                           <strong>C:</strong> Option C &nbsp;&nbsp;&nbsp;&nbsp; 
+                           <strong>D:</strong> Option D</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="generateBtn" class="btn-primary">Generate Exam Paper</button>
+                    <button type="button" id="downloadBtn" class="btn-secondary">Download PDF</button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
